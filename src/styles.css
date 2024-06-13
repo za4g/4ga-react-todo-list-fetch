@@ -1,0 +1,57 @@
+.todo-component {
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content:  */
+  border: 1px solid lightgray;
+  width: 50%;
+  padding: 10px;
+}
+
+.todo-header {
+  color: orangered;
+}
+
+.todo-input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.todo-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc; /* Optional: Adds a border around each todo item */
+  padding: 10px; /* Optional: Adds padding inside each todo item */
+  margin-bottom: 5px; /* Optional: Adds space between todo items */
+  border-radius: 4px; /* Optional: Rounds the corners of each todo item */
+  background-color: #f9f9f9; /* Optional: Adds a background color to each todo item */
+}
+
+/* li {
+    To visualize how the space-between works, uncomment the line below
+    border: 1px solid rebeccapurple;
+  } */
+
+.item-count {
+  margin-left: 5px;
+}
+
+.delete-button {
+  background: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
