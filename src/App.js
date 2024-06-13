@@ -8,34 +8,31 @@ function Todos() {
   const [count, setCount] = useState(0);
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const url = 'https://jsonplaceholder.typicode.com/todos';
+  const url = "https://jsonplaceholder.typicode.com/todos";
 
-  async function fetchTodos {
+  async function fetchTodos() {
     //fetch the data from the API
     try {
       const response = await fetch(url);
 
-      if(!response.ok) {
-        throw new Error('HTTP error! Status: ${response.status}');
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
       const data = await response.json();
-      
-    }
-    catch (error) {
-      console.log('Error fetching data:', error)
-    }
 
-    //assign fetched data to local list
-    const todoTitles = data.map(todo => todo.title);
-    setTodos(todoTitles);
-  };
+      //assign fetched data to local list
+      const todoTitles = data.map((todo) => todo.title);
+      setTodos(todoTitles);
+      setCount(todoTitles.length);
+    } catch (error) {
+      console.log("Error fetching data:", error);
+    }
+  }
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      console.log("Enter was pressed...");
       if (inputValue.trim() !== "") {
-        console.log("Adding TODO");
         setTodos([...todos, inputValue]);
         setInputValue("");
         setCount(count + 1);
@@ -44,20 +41,18 @@ function Todos() {
   };
 
   const deleteTodo = (index) => {
-    console.log("Delete Section - TODOS", todos);
-    console.log("Removing TODOs");
     const newTodos = todos.filter(
       (todo, currentIndex) => currentIndex !== index
     );
-    console.log("");
-    console.log("newTODOS", newTodos);
+
     setTodos(newTodos);
     setCount(newTodos.length);
   };
 
   useEffect(() => {
+    console.log("useEffect");
     fetchTodos();
-  }, [count, todos]);
+  }, []);
 
   return (
     <div className="todo-component">
